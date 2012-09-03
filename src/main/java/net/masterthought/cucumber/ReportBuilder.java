@@ -25,7 +25,7 @@ public class ReportBuilder {
     private boolean runWithJenkins;
 
 
-    public ReportBuilder(List<String> jsonReports, File reportDirectory, String pluginUrlPath, String buildNumber, String buildProject, boolean skippedFails, boolean undefinedFails, boolean flashCharts,  boolean runWithJenkins) throws IOException {
+    public ReportBuilder(List<String> jsonReports, File reportDirectory, String pluginUrlPath, String buildNumber, String buildProject, boolean skippedFails, boolean undefinedFails, boolean flashCharts, boolean runWithJenkins) throws IOException {
         ConfigurationOptions.setSkippedFailsBuild(skippedFails);
         ConfigurationOptions.setUndefinedFailsBuild(undefinedFails);
         ReportParser reportParser = new ReportParser(jsonReports);
@@ -96,15 +96,15 @@ public class ReportBuilder {
         context.put("total_fails", numberTotalFailed);
         context.put("total_skipped", numberTotalSkipped);
         context.put("total_pending", numberTotalPending);
-        if(flashCharts){
+        if (flashCharts) {
             context.put("step_data", FlashChartBuilder.donutChart(numberTotalPassed, numberTotalFailed, numberTotalSkipped, numberTotalPending));
             context.put("scenario_data", FlashChartBuilder.pieChart(ri.getTotalScenariosPassed(), ri.getTotalScenariosFailed()));
         } else {
             JsChartUtil pie = new JsChartUtil();
             List<String> stepColours = pie.orderStepsByValue(numberTotalPassed, numberTotalFailed, numberTotalSkipped, numberTotalPending);
             context.put("step_data", stepColours);
-            context.put("scenarios_passed",ri.getTotalScenariosPassed());
-            context.put("scenarios_failed",ri.getTotalScenariosFailed());
+            context.put("scenarios_passed", ri.getTotalScenariosPassed());
+            context.put("scenarios_failed", ri.getTotalScenariosFailed());
             List<String> scenarioColours = pie.orderScenariosByValue(ri.getTotalScenariosPassed(), ri.getTotalScenariosFailed());
             context.put("scenario_data", scenarioColours);
         }
@@ -150,20 +150,21 @@ public class ReportBuilder {
         context.put("total_fails", ri.getTotalTagFails());
         context.put("total_skipped", ri.getTotalTagSkipped());
         context.put("total_pending", ri.getTotalTagPending());
-        if(flashCharts){
-        context.put("chart_data", FlashChartBuilder.StackedColumnChart(ri.tagMap));
+        if (flashCharts) {
+            context.put("chart_data", FlashChartBuilder.StackedColumnChart(ri.tagMap));
         } else {
-          context.put("chart_rows", JsChartUtil.generateTagChartData(ri.tagMap));
+            context.put("chart_rows", JsChartUtil.generateTagChartData(ri.tagMap));
         }
         context.put("total_duration", ri.getTotalTagDuration());
         context.put("time_stamp", ri.timeStamp());
         context.put("jenkins_base", pluginUrlPath);
         context.put("fromJenkins", runWithJenkins);
+        context.put("flashCharts", flashCharts);
         generateReport("tag-overview.html", featureOverview, context);
     }
 
     private void copyResource(String resourceLocation, String resourceName) throws IOException, URISyntaxException {
-        final File tmpResourcesArchive = File.createTempFile("temp",resourceName + ".zip");
+        final File tmpResourcesArchive = File.createTempFile("temp", resourceName + ".zip");
 
         InputStream resourceArchiveInputStream = ReportBuilder.class.getResourceAsStream(resourceLocation + "/" + resourceName);
         if (resourceArchiveInputStream == null) {

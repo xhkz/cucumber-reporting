@@ -145,12 +145,12 @@ public class ReportInformation {
     }
 
     public int getTotalScenariosPassed() {
-         return numberPassingScenarios.size();
-     }
+        return numberPassingScenarios.size();
+    }
 
     public int getTotalScenariosFailed() {
-         return numberFailingScenarios.size();
-     }
+        return numberFailingScenarios.size();
+    }
 
     private void processTags() {
         for (TagObject tag : tagMap) {
@@ -164,9 +164,9 @@ public class ReportInformation {
             for (ScenarioTag scenarioTag : tag.getScenarios()) {
                 if (Util.hasSteps(scenarioTag)) {
                     Step[] steps = scenarioTag.getScenario().getSteps();
+                    totalTagSteps += steps.length;
                     for (Step step : steps) {
-                        totalTagSteps += steps.length;
-                        totalTagDuration = totalTagDuration + step.getDuration();
+                        totalTagDuration += step.getDuration();
                     }
                 }
             }
