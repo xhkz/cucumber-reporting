@@ -160,7 +160,6 @@ public class ReportInformation {
             totalTagSkipped += tag.getNumberOfSkipped();
             totalTagPending += tag.getNumberOfPending();
 
-
             for (ScenarioTag scenarioTag : tag.getScenarios()) {
                 if (Util.hasSteps(scenarioTag)) {
                     Step[] steps = scenarioTag.getScenario().getSteps();
@@ -178,17 +177,17 @@ public class ReportInformation {
             List<ScenarioTag> scenarioList = new ArrayList<ScenarioTag>();
             Element[] scenarios = feature.getElements();
             if (Util.itemExists(scenarios)) {
-                numberOfScenarios = numberOfScenarios + scenarios.length;
+                numberOfScenarios += scenarios.length;
                 for (Element scenario : scenarios) {
 
                     numberPassingScenarios = Util.setScenarioStatus(numberPassingScenarios, scenario, scenario.getStatus(), Util.Status.PASSED);
                     numberFailingScenarios = Util.setScenarioStatus(numberFailingScenarios, scenario, scenario.getStatus(), Util.Status.FAILED);
 
                     //process tags
-                    if (feature.hasTags()) {
-                        scenarioList.add(new ScenarioTag(scenario, feature.getFileName()));
-                        tagMap = createOrAppendToTagMap(tagMap, feature.getTagList(), scenarioList);
-                    }
+//                    if (feature.hasTags()) {
+//                        scenarioList.add(new ScenarioTag(scenario, feature.getFileName()));
+//                        tagMap = createOrAppendToTagMap(tagMap, feature.getTagList(), scenarioList);
+//                    }
 
                     if (Util.hasScenarios(feature)) {
                         if (scenario.hasTags()) {
@@ -246,16 +245,22 @@ public class ReportInformation {
             if (exists) {
                 List<ScenarioTag> existingTagList = tagObj.getScenarios();
                 for (ScenarioTag scenarioTag : scenarioList) {
-                    existingTagList = addScenarioUnlessExists(existingTagList, scenarioTag);
+                    //add existingTagList when it contains specific tag
+                    if (scenarioTag.getScenario().getTagList().contains(tag))
+                        existingTagList = addScenarioUnlessExists(existingTagList, scenarioTag);
                 }
                 tagMap.remove(tagObj);
                 tagObj.setScenarios(existingTagList);
                 tagMap.add(tagObj);
             } else {
-                tagObj = new TagObject(tag, scenarioList);
+                //a new tag should always appear with a new scenario
+                List<ScenarioTag> newTOList = new ArrayList<ScenarioTag>();
+                newTOList.add(scenarioList.get(scenarioList.size() - 1));
+                tagObj = new TagObject(tag, newTOList);
                 tagMap.add(tagObj);
             }
         }
+
         return tagMap;
     }
 
