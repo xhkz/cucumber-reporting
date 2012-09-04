@@ -45,27 +45,27 @@ flashCharts means either use the default flashcharts or use the D3 javascript ch
 There is a feature overview page:
 
 ![feature overview page]
-(https://github.com/masterthought/cucumber-reporting/raw/master/.README/feature-overview.png)
+(https://github.com/pOOOOOr/cucumber-reporting/blob/master/.README/feature-overview.png)
 
 And there are also feature specific results pages:
 
 ![feature specific page passing]
-(https://github.com/masterthought/cucumber-reporting/raw/master/.README/feature-passed.png)
+(https://github.com/pOOOOOr/cucumber-reporting/blob/master/.README/feature-passed.png)
 
 And useful information for failures:
 
 ![feature specific page passing]
-(https://github.com/masterthought/cucumber-reporting/raw/master/.README/feature-failed.png)
+(https://github.com/pOOOOOr/cucumber-reporting/blob/master/.README/feature-failed.png)
 
 If you have tags in your cucumber features you can see a tag overview:
 
 ![Tag overview]
-(https://github.com/masterthought/cucumber-reporting/raw/master/.README/tag-overview.png)
+(https://github.com/pOOOOOr/cucumber-reporting/blob/master/.README/tag-overview.png)
 
 And you can drill down into tag specific reports:
 
 ![Tag report]
-(https://github.com/masterthought/cucumber-reporting/raw/master/.README/tag-report.png)
+(https://github.com/pOOOOOr/cucumber-reporting/blob/master/.README/tag-report.png)
 
 ## Develop
 
