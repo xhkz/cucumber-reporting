@@ -103,7 +103,7 @@ public class Feature {
     public int getNumberOfScenarios() {
         int result = 0;
         if (Util.itemExists(elements)) {
-          result = elements.length;
+            result = elements.length;
         }
         return result;
     }

@@ -63,13 +63,12 @@ public class JsChartUtil {
     public static String generateTagChartData(List<TagObject> tagObjectList) {
         StringBuffer buffer = new StringBuffer();
         for (TagObject tag : tagObjectList) {
-           buffer.append("[[" + tag.getNumberOfPasses() + "," + tag.getNumberOfFailures() + "," + tag.getNumberOfSkipped() + "," + tag.getNumberOfPending() + "],{label:'" + tag.getTagName() + "'}],");
+            buffer.append("[[" + tag.getNumberOfPasses() + "," + tag.getNumberOfFailures() + "," + tag.getNumberOfSkipped() + "," + tag.getNumberOfPending() + "],{label:'" + tag.getTagName() + "'}],");
         }
         return buffer.toString();
 
 
     }
-
 
 
 }

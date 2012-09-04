@@ -56,7 +56,7 @@ public class ElementTest {
     }
 
     @Test
-    public void shouldReturnTagList(){
+    public void shouldReturnTagList() {
         List<String> expectedList = new ArrayList<String>();
         expectedList.add("@fast");
         expectedList.add("@super");
@@ -65,12 +65,12 @@ public class ElementTest {
     }
 
     @Test
-    public void shouldKnowIfHasTags(){
+    public void shouldKnowIfHasTags() {
         assertThat(taggedElement.hasTags(), is(true));
     }
 
     @Test
-    public void shouldReturnTagsAsHtml(){
+    public void shouldReturnTagsAsHtml() {
         assertThat(taggedElement.getTags(), is("<div class=\"feature-tags\">@fast,@super,@checkout</div>"));
     }
 

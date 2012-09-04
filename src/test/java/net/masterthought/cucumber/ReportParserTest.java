@@ -1,6 +1,5 @@
 package net.masterthought.cucumber;
 
-import static net.masterthought.cucumber.FileReaderUtil.getAbsolutePathFromResource;
 import net.masterthought.cucumber.json.Feature;
 import org.junit.Test;
 
@@ -9,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static net.masterthought.cucumber.FileReaderUtil.getAbsolutePathFromResource;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -26,7 +26,7 @@ public class ReportParserTest {
     public void shouldContainFourFeatures() throws IOException {
         ReportParser reportParser = new ReportParser(validJsonReports());
         List<Feature> features = new ArrayList<Feature>();
-        for (Map.Entry<String, List<Feature>> pairs : reportParser.getFeatures().entrySet()){
+        for (Map.Entry<String, List<Feature>> pairs : reportParser.getFeatures().entrySet()) {
             List<Feature> featureList = pairs.getValue();
             features.addAll(featureList);
         }
@@ -58,7 +58,6 @@ public class ReportParserTest {
     }
 
 
-    
     private List<String> validJsonReports() {
         List<String> jsonReports = new ArrayList<String>();
         jsonReports.add(getAbsolutePathFromResource("net/masterthought/cucumber/project1.json"));

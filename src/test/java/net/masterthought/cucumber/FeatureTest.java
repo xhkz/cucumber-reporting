@@ -1,7 +1,5 @@
 package net.masterthought.cucumber;
 
-import static net.masterthought.cucumber.FileReaderUtil.getAbsolutePathFromResource;
-
 import net.masterthought.cucumber.json.Feature;
 import net.masterthought.cucumber.util.Util;
 import org.junit.Before;
@@ -11,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static net.masterthought.cucumber.FileReaderUtil.getAbsolutePathFromResource;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 

@@ -12,7 +12,10 @@ import org.apache.velocity.app.VelocityEngine;
 
 import java.io.*;
 import java.net.URISyntaxException;
-import java.util.*;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
 public class ReportBuilder {
 
