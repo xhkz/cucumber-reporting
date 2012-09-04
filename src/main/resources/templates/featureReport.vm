@@ -82,6 +82,7 @@
             border-color: gray;
             border-collapse: collapse;
             background-color: white;
+            width: 940px;
         }
 
         table.stats-table th {
